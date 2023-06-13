@@ -14,8 +14,13 @@
 
 key = :c3
 
+# Sleep time can be 1.5, 0.75 or 0.375.
+# Please change it as you would like.
+# using 0.375 may break the code,
+# this is intended.
+# If the code does not break, enter smaller divisions until it does.
 
-sleep_time =  0.75
+sleep_time =  1.5
 
 define :my_sound do
   
@@ -88,4 +93,6 @@ live_loop :tom, sync: :kick do
   sample :drum_tom_lo_hard
   sleep sleep_time
 end
+
+
 
