@@ -29,7 +29,7 @@ end
 define :driver do |length|
   with_fx :ixi_techno, phase: length do
     use_synth :prophet
-    play :a1, sustain: time*length, amp: 1
+    play :a1, sustain: time*length, amp: 0.8
   end
 end
 
