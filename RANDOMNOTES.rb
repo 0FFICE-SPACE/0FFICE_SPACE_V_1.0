@@ -26,14 +26,8 @@ end
 
 live_loop :bl00p do
   random_notes2
-  if one_in 4
-    sample :sn_zome
-    use_synth :bnoise
-    play choose(chord(:D3, :minor)), release: 1, amp: 0.6
-  else
-    sample :sn_zome
-  end
   
+  sample :sn_zome
 end
 
 
