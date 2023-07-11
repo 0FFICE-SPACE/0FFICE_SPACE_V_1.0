@@ -30,29 +30,30 @@ define :twinkle do |chord, r|
 end
 
 
-
-strum(chord(:C4, :minor7))
-sleep 2
-strum(chord(:C4, :minor))
-sleep 2
-strum(chord(:G4, :minor7))
-sleep 0.5
-strum(chord(:D4, :minor7))
-sleep 0.5
-strum(chord(:C4, :minor7))
-twinkle(chord(:D4, :minor7), 1)
-twinkle(chord(:G4, :minor7), 1)
-twinkle(chord(:C4, :minor7), 2)
-sleep 3
-strum(chord(:D4, :minor7))
-sleep 1
-twinkle(chord(:G4, :minor7), 1)
-twinkle(chord(:C4, :minor7), 2)
-twinkle(chord(:D4, :minor7), 1)
-sleep 2
-strum(chord(:G4, :minor7))
-twinkle(chord(:G4, :minor7), 3)
-
+live_loop :LOVE do
+  strum(chord(:C4, :minor7))
+  sleep 2
+  strum(chord(:C4, :minor))
+  sleep 2
+  strum(chord(:G4, :minor7))
+  sleep 0.5
+  strum(chord(:D4, :minor7))
+  sleep 0.5
+  strum(chord(:C4, :minor7))
+  twinkle(chord(:D4, :minor7), 1)
+  twinkle(chord(:G4, :minor7), 1)
+  twinkle(chord(:C4, :minor7), 2)
+  sleep 3
+  strum(chord(:D4, :minor7))
+  sleep 1
+  twinkle(chord(:G4, :minor7), 1)
+  twinkle(chord(:C4, :minor7), 2)
+  twinkle(chord(:D4, :minor7), 1)
+  sleep 2
+  strum(chord(:G4, :minor7))
+  twinkle(chord(:G4, :minor7), 3)
+  sleep 1
+end
 
 
 
