@@ -50,7 +50,7 @@ define :drum_pattern do |rate|
   end
 end
 
-sample :drum_roll, amp:2
+sample :drum_roll, amp: 2
 
 
 live_loop :main, delay: 6 do
