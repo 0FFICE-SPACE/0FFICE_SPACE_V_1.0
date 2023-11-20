@@ -69,8 +69,14 @@ define :thunder do
 end
 
 define :lightning do
-  
+  with_fx :distortion, distort: 0.9 do
+    
+    sample :glitch_perc1, norm: 1
+    
+  end
+  thunder
 end
+
 define :wind do
   with_synth :pnoise do |k|
     with_fx :reverb do
@@ -98,15 +104,10 @@ define :wind do
 end
 
 live_loop :main do
-  wind
-  
-  thunder
-  
+  lightning
+  / wind
+  lightning
   rain
-  drip
-  
-  
-  
-  
+  drip/
 end
 
