@@ -8,7 +8,6 @@
  / / / / / / / /
 / / / / / / / /
 
-
 -------------------------------------------------------
 '
 
@@ -26,14 +25,18 @@ end
 define :drip do
   live_loop :drip do
     with_fx :reverb do
-      with_fx :lpf, cutoff: 70 do
-        sample :hat_zap, amp: 20
-        sleep rrand(0.5, 3)
+      with_fx :pan, pan: 0.7 do
+        with_fx :lpf, cutoff: 70 do
+          sample :hat_zap, amp: rrand(15,20)
+          sleep rrand(0.5, 3)
+        end
       end
       if one_in 3
-        with_fx :lpf, cutoff: 90 do
-          sample :hat_tap, amp: 20
-          sleep rrand(0.2, 1.4)
+        with_fx :pan, pan: 0.4 do
+          with_fx :lpf, cutoff: 90 do
+            sample :hat_tap, amp: rrand(15,20)
+            sleep rrand(0.2, 1.4)
+          end
         end
       end
     end
@@ -44,23 +47,26 @@ end
 define :thunder do
   live_loop :thunder do
     if one_in 4
-      with_fx :lpf, cutoff: 45 do
-        with_fx :reverb,room: 1, damp: rrand(0,1) do
+      with_fx :pan, pan: rrand(-1,1), amp: rrand(0.5,1) do
+        with_fx :lpf, cutoff: 45 do
           sample :drum_bass_hard, rate: 0.2, amp: rrand(10,15), attack: 0, release: 4
-          sleep 0.05
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(9,14), attack: 0, release: 4
-          sleep rrand(0.1, 0.2)
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(8,13), attack: 0, release: 4
-          sleep 0.1
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(7,12), attack: 0, release: 4
-          sleep 0.05
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(6,11), attack: 0, release: 4
-          sleep rrand(0.1, 0.2)
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(5,10), attack: 0, release: 4
-          sleep 0.1
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(4,9), attack: 0, release: 4
-          sleep rrand(0.1, 0.2)
-          sample :drum_bass_hard, rate: 0.2, amp: rrand(3,8), attack: 0, release: 4
+          with_fx :reverb,room: 1, damp: rrand(0,1) do
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(10,15), attack: 0, release: 4
+            sleep 0.05
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(9,14), attack: 0, release: 4
+            sleep rrand(0.1, 0.2)
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(8,13), attack: 0, release: 4
+            sleep 0.1
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(7,12), attack: 0, release: 4
+            sleep 0.05
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(6,11), attack: 0, release: 4
+            sleep rrand(0.1, 0.2)
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(5,10), attack: 0, release: 4
+            sleep 0.1
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(4,9), attack: 0, release: 4
+            sleep rrand(0.1, 0.2)
+            sample :drum_bass_hard, rate: 0.2, amp: rrand(3,8), attack: 0, release: 4
+          end
         end
       end
     end
@@ -69,11 +75,7 @@ define :thunder do
 end
 
 define :lightning do
-  with_fx :distortion, distort: 0.9 do
-    
-    sample :glitch_perc1, norm: 1
-    
-  end
+  
   thunder
 end
 
@@ -104,10 +106,9 @@ define :wind do
 end
 
 live_loop :main do
-  lightning
-  / wind
-  lightning
+  wind
+  thunder
   rain
-  drip/
+  drip
 end
 
